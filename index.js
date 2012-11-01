@@ -6,7 +6,11 @@ module.exports = function(wintersmith, callback) {
   };
 
   NunjucksTemplate.prototype.render = function render(locals, callback) {
-    callback(null, new Buffer(this.template.render(locals)));
+    try {
+      callback(null, new Buffer(this.template.render(locals)));
+    } catch (error) {
+      callback(error);
+    }
   };
 
   NunjucksTemplate.fromFile = function fromFile(filename, base, callback) {
