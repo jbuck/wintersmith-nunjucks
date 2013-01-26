@@ -8,6 +8,6 @@
   "repository": "https://github.com/jbuck/wintersmith-nunjucks.git",
   "license": "BSD",
   "dependencies": {
-    "nunjucks": "~0.1.5"
+    "nunjucks": "~0.1.7"
   }
 }
