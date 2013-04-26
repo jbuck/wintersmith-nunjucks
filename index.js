@@ -1,6 +1,6 @@
 var nunjucks = require("nunjucks");
 
-module.exports = function(wintersmith, callback) {
+module.exports = function(env, callback) {
   var NunjucksTemplate = function(template) {
     this.template = template;
   };
@@ -13,12 +13,12 @@ module.exports = function(wintersmith, callback) {
     }
   };
 
-  NunjucksTemplate.fromFile = function fromFile(filename, base, callback) {
-    var env = new nunjucks.Environment(new nunjucks.FileSystemLoader(base));
-    callback(null, new NunjucksTemplate(env.getTemplate(filename)));
+  NunjucksTemplate.fromFile = function fromFile(filepath, callback) {
+    var nenv = new nunjucks.Environment(new nunjucks.FileSystemLoader(env.templatesPath));
+    callback(null, new NunjucksTemplate(nenv.getTemplate(filepath.relative)));
   };
 
-  wintersmith.registerTemplatePlugin("**/*.*(html)", NunjucksTemplate);
+  env.registerTemplatePlugin("**/*.*(html)", NunjucksTemplate);
 
   callback();
 };
