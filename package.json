@@ -1,11 +1,16 @@
 {
   "name": "wintersmith-nunjucks",
   "preferGlobal": "true",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "author": "Jon Buckley <jon@jbuckley.ca>",
   "description": "Nunjucks templates for Wintersmith",
   "main": "index.js",
   "repository": "https://github.com/jbuck/wintersmith-nunjucks.git",
+  "keywords": [
+    "wintersmith",
+    "wintersmith-plugin"
+    "nunjucks"
+  ],
   "license": "BSD",
   "dependencies": {
     "nunjucks": "~0.1.8a"
