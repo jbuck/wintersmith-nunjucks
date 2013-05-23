@@ -8,7 +8,7 @@
   "repository": "https://github.com/jbuck/wintersmith-nunjucks.git",
   "keywords": [
     "wintersmith",
-    "wintersmith-plugin"
+    "wintersmith-plugin",
     "nunjucks"
   ],
   "license": "BSD",
