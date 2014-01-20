@@ -18,7 +18,7 @@ module.exports = function(env, callback) {
     callback(null, new NunjucksTemplate(nenv.getTemplate(filepath.relative)));
   };
 
-  env.registerTemplatePlugin("**/*.*(html)", NunjucksTemplate);
+  env.registerTemplatePlugin("**/*.*(html|nunjucks)", NunjucksTemplate);
 
   callback();
 };
