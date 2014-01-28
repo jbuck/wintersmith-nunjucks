@@ -14,15 +14,13 @@ module.exports = function(env, callback) {
     }
   };
 
-  loadFilters = function(nenv) {
-    if(env.config.nunjucks) {
-      if(env.config.nunjucks.filterdir) {
-        env.config.nunjucks.filters.map( function (name) {
-          file = path.join(env.config.nunjucks.filterdir, name + ".js");
-          filter = env.loadModule(env.resolvePath(file), true);
-          nenv.addFilter(name, filter);
-        });
-      }
+  var loadFilters = function(nenv) {
+    if(env.config.nunjucks && env.config.nunjucks.filterdir) {
+      env.config.nunjucks.filters.map( function (name) {
+        file = path.join(env.config.nunjucks.filterdir, name + ".js");
+        filter = env.loadModule(env.resolvePath(file), true);
+        nenv.addFilter(name, filter);
+      });
     }
   };
 

@@ -15,7 +15,13 @@ How to use
 How to add custom filters
 ---------------------------
 
-Filters are small files stored in a filters directory. The filename has to be the name of the filter + '.js'.
+From the nunjucks documentation at http://jlongster.github.io/nunjucks/templating.html#filters:
+
+>Filters are essentially functions that can be applied to variables. They are called with a pipe operator (|) and can take arguments.
+
+For more information on how to write customer Filters, take a look at the API documentation page at: http://jlongster.github.io/nunjucks/api#custom-filters
+
+To use customer filters with wintersmith, put the filter in its own file stored in a filters directory. The filename has to be the name of the filter + '.js'.
 
 so if your filter is in './filters/myfirstfilter.js' add a  nunjucks section like this to your config.json:
 
@@ -25,3 +31,5 @@ so if your filter is in './filters/myfirstfilter.js' add a  nunjucks section lik
     "filters": ["myfirstfilter"]
 }
 ```
+
+It will be available in your templates at 'myfirstfilter'
