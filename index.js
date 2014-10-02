@@ -2,6 +2,10 @@ var nunjucks = require("nunjucks");
 var path = require("path");
 
 module.exports = function(env, callback) {
+
+  // Load the new nunjucks environment.
+  var nenv = new nunjucks.Environment(new nunjucks.FileSystemLoader(env.templatesPath));
+
   var NunjucksTemplate = function(template) {
     this.template = template;
   };
@@ -25,7 +29,6 @@ module.exports = function(env, callback) {
   };
 
   NunjucksTemplate.fromFile = function fromFile(filepath, callback) {
-    var nenv = new nunjucks.Environment(new nunjucks.FileSystemLoader(env.templatesPath));
     loadFilters(nenv);
     callback(null, new NunjucksTemplate(nenv.getTemplate(filepath.relative)));
   };
