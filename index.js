@@ -6,6 +6,15 @@ module.exports = function(env, callback) {
   // Load the new nunjucks environment.
   var nenv = new nunjucks.Environment(new nunjucks.FileSystemLoader(env.templatesPath));
 
+  // Load the filters
+  if(env.config.nunjucks && env.config.nunjucks.filterdir) {
+    env.config.nunjucks.filters.map( function (name) {
+      file = path.join(env.config.nunjucks.filterdir, name + ".js");
+      filter = env.loadModule(env.resolvePath(file), true);
+      nenv.addFilter(name, filter);
+    });
+  }
+
   var NunjucksTemplate = function(template) {
     this.template = template;
   };
@@ -18,23 +27,10 @@ module.exports = function(env, callback) {
     }
   };
 
-  var loadFilters = function(nenv) {
-    if(env.config.nunjucks && env.config.nunjucks.filterdir) {
-      env.config.nunjucks.filters.map( function (name) {
-        file = path.join(env.config.nunjucks.filterdir, name + ".js");
-        filter = env.loadModule(env.resolvePath(file), true);
-        nenv.addFilter(name, filter);
-      });
-    }
-  };
-
   NunjucksTemplate.fromFile = function fromFile(filepath, callback) {
-    loadFilters(nenv);
     callback(null, new NunjucksTemplate(nenv.getTemplate(filepath.relative)));
   };
 
-
   env.registerTemplatePlugin("**/*.*(html|nunjucks)", NunjucksTemplate);
-
   callback();
 };
