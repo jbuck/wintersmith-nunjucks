@@ -1,7 +1,7 @@
 {
   "name": "wintersmith-nunjucks",
   "preferGlobal": "true",
-  "version": "0.5.1",
+  "version": "0.6.0",
   "author": "Jon Buckley <jon@jbuckley.ca>",
   "description": "Nunjucks templates for Wintersmith",
   "main": "index.js",
