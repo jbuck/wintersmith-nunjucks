@@ -1,6 +1,5 @@
 {
   "name": "wintersmith-nunjucks",
-  "preferGlobal": "true",
   "version": "0.6.0",
   "author": "Jon Buckley <jon@jbuckley.ca>",
   "description": "Nunjucks templates for Wintersmith",
@@ -11,7 +10,7 @@
     "wintersmith-plugin",
     "nunjucks"
   ],
-  "license": "BSD",
+  "license": "BSD-2-Clause",
   "dependencies": {
     "nunjucks": "^2.1.0"
   }
