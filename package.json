@@ -13,6 +13,6 @@
   ],
   "license": "BSD",
   "dependencies": {
-    "nunjucks": "^1.1.0"
+    "nunjucks": "^2.1.0"
   }
 }

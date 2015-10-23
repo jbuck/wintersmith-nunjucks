@@ -15,6 +15,15 @@ module.exports = function(env, callback) {
     });
   }
 
+  // Configure nunjucks environment.
+  if (env.config.nunjucks && env.config.nunjucks.autoescape != null) {
+    nenv.opts.autoescape = env.config.nunjucks.autoescape;
+  } else {
+    // In nunjucks version 2.0.0 and higher autoescaping is turned on by default.
+    // This breaks some templates so we keep the old behaviour.
+    nenv.opts.autoescape = false;
+  }
+
   var NunjucksTemplate = function(template) {
     this.template = template;
   };
