@@ -33,3 +33,16 @@ so if your filter is in './filters/myfirstfilter.js' add a  nunjucks section lik
 ```
 
 It will be available in your templates at 'myfirstfilter'
+
+
+Autoescaping
+------------
+
+As of nunjucks 2.0.0 autoescaping was turned on by default. This plugin keeps the old default (off) as to avoid breaking changes. If you want to change behaviour you can control it with the autoescape option in your config.json.
+
+```javascript
+"nunjucks": {  
+    "autoescape": true
+}
+```
+

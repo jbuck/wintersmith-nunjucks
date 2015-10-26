@@ -4,7 +4,8 @@ var path = require("path");
 module.exports = function(env, callback) {
 
   // Load the new nunjucks environment.
-  var nenv = new nunjucks.Environment(new nunjucks.FileSystemLoader(env.templatesPath));
+  var loader = new nunjucks.FileSystemLoader(env.templatesPath, {watch: true});
+  var nenv = new nunjucks.Environment(loader);
 
   // Load the filters
   if(env.config.nunjucks && env.config.nunjucks.filterdir) {
@@ -13,6 +14,11 @@ module.exports = function(env, callback) {
       filter = env.loadModule(env.resolvePath(file), true);
       nenv.addFilter(name, filter);
     });
+  }
+
+  // Configure nunjucks environment.
+  if (env.config.nunjucks && env.config.nunjucks.autoescape != null) {
+    nenv.opts.autoescape = env.config.nunjucks.autoescape;
   }
 
   var NunjucksTemplate = function(template) {
