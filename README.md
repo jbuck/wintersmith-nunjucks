@@ -35,7 +35,7 @@ so if your filter is in './filters/myfirstfilter.js' add a  nunjucks section lik
 It will be available in your templates at 'myfirstfilter'
 
 
-Filters that are already packaged in modules (like for example [nunjucks-date](https://www.npmjs.com/package/nunjucks-date)) can be loaded by specifying them like this in your config.json:
+Filters that are already packaged in modules (like for example [nunjucks-date](https://www.npmjs.com/package/nunjucks-date)) can be loaded by specifying them like this in your config.json, if they export an [install-method](https://github.com/techmsi/nunjucks-date/blob/0b1996f643abadddb3fd68ff565c733742617438/index.js#L40):
 
 ```javascript
 "nunjucks": {
