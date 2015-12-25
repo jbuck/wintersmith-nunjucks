@@ -18,6 +18,12 @@ module.exports = function(env, callback) {
       nenv.addFilter(name, filter);
     });
   }
+  if(env.config.nunjucks && env.config.nunjucks.filtermodules) {
+    env.config.nunjucks.filtermodules.map( function (name) {
+      var filter = require(name);
+      filter.install(nenv);
+    });
+  }
 
   // Configure nunjucks environment.
   if (env.config.nunjucks && env.config.nunjucks.autoescape != null) {
