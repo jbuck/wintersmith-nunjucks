@@ -12,6 +12,6 @@
   ],
   "license": "BSD-2-Clause",
   "dependencies": {
-    "nunjucks": "^2.1.0"
+    "nunjucks": "^3.0.1"
   }
 }
