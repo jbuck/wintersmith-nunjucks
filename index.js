@@ -28,6 +28,8 @@ module.exports = function(env, callback) {
   // Configure nunjucks environment.
   if (env.config.nunjucks && env.config.nunjucks.autoescape != null) {
     nenv.opts.autoescape = env.config.nunjucks.autoescape;
+  } else {
+    nenv.opts.autoescape = false;
   }
 
   var NunjucksTemplate = function(template) {
