@@ -48,11 +48,11 @@ this specific filter would then be available as `date` in your templates.
 Autoescaping
 ------------
 
-As of nunjucks 2.0.0 autoescaping was turned on by default. As of v1.0 this plugin also defaults to autoescaping turned on. If you want to change behaviour for pre-v1.0 compatibility you can control it with the autoescape option in your config.json.
+As of nunjucks 2 autoescaping was turned on by default. This plugin reverts that since autoescaping is not usually wanted when used in a static site generator. If you want to change behaviour for some reason you can control it with the autoescape option in your config.json.
 
 ```javascript
 "nunjucks": {
-    "autoescape": false
+    "autoescape": true
 }
 ```
 
