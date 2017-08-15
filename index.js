@@ -7,7 +7,13 @@ module.exports = function(env, callback) {
   var loaderOpts = {
     watch: (env.mode == 'preview')
   };
-  var loader = new nunjucks.FileSystemLoader(env.templatesPath, loaderOpts);
+  var templatesPaths = [ env.templatesPath ];
+  if(env.config.nunjucks && env.config.nunjucks.additionaltemplatespaths) {
+    env.config.nunjucks.additionaltemplatespaths.map(function(templatesPath) {
+      templatesPaths = templatesPaths.concat(path.resolve(env.workDir, templatesPath));
+    });
+  }
+  var loader = new nunjucks.FileSystemLoader(templatesPaths, loaderOpts);
   var nenv = new nunjucks.Environment(loader);
 
   // Load the filters
